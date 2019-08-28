@@ -11,9 +11,10 @@ import { CategoriasPage } from '../categorias/categorias';
 export class HomePage {
 
   constructor(public navCtrl: NavController, public menu: MenuController) {  //injeção de dependência
-
+  
   }
 
+  //lifecicle
   ionViewWillEnter() { //ao entrar na página, o swipe lateral é desativado
     this.menu.swipeEnable(false);
   }
@@ -22,6 +23,7 @@ export class HomePage {
     this.menu.swipeEnable(true);
   }
  
+
   login() {  //por padrão é público
     this.navCtrl.setRoot('CategoriasPage') //páginas criadas pelo CLI são criadas por Lazy Loading, então chama como String
   }
