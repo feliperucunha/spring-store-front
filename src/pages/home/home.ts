@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, MenuController } from 'ionic-angular';
 import { IonicPage } from 'ionic-angular/navigation/ionic-page';
 import { CategoriasPage } from '../categorias/categorias';
 
@@ -10,8 +10,16 @@ import { CategoriasPage } from '../categorias/categorias';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {  //injeção de dependência
+  constructor(public navCtrl: NavController, public menu: MenuController) {  //injeção de dependência
 
+  }
+
+  ionViewWillEnter() { //ao entrar na página, o swipe lateral é desativado
+    this.menu.swipeEnable(false);
+  }
+
+    ionViewDidLeave() { //ao sair da página inicial, reativar o swipe lateral
+    this.menu.swipeEnable(true);
   }
  
   login() {  //por padrão é público
