@@ -4,7 +4,7 @@ import { HomePage } from './home';
 
 @NgModule({
     declarations: [HomePage],
-    imports: [IonicPageModule.forChild(HomePage)]
+    imports: [IonicPageModule.forChild(HomePage)] //PADRÃO
 })
 export class HomeModule {
 }
