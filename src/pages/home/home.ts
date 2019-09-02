@@ -37,7 +37,8 @@ export class HomePage {
   login() {  //por padrão é público
     this.auth.authenticate(this.creds)
       .subscribe(response => {
-        console.log(response.headers.get('Authorization'));
+        //console.log(response.headers.get('Authorization')); --> primeira implementação sem autenticação
+        this.auth.successfulLogin(response.headers.get('Authorization'));
         this.navCtrl.setRoot('CategoriasPage');
       },
       error => {});    
