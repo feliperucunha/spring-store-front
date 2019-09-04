@@ -32,6 +32,15 @@ export class HomePage {
     ionViewDidLeave() { //ao sair da página inicial, reativar o swipe lateral
     this.menu.swipeEnable(true);
   }
+
+  ionViewDidEnter() { //aproveita o token de login para não deslogar ao fechar o app
+    this.auth.refreshToken()
+      .subscribe(response => {
+        this.auth.successfulLogin(response.headers.get('Authorization'));
+        this.navCtrl.setRoot('CategoriasPage');
+      },
+      error => {});  
+  }
  
 
   login() {  //por padrão é público
