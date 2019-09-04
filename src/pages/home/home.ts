@@ -53,4 +53,8 @@ export class HomePage {
       error => {});    
     //this.navCtrl.setRoot('CategoriasPage') //páginas criadas pelo CLI são criadas por Lazy Loading, então chama como String ; esse comando manda direto do login para categorias, foi usado apenas para teste
   }
+
+  signup() {
+    this.navCtrl.push('SignupPage');
+  }
 }
