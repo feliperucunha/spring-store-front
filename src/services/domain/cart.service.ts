@@ -26,8 +26,8 @@ export class CartService {
     addProduto(produto: ProdutoDTO) : Cart {
         let cart = this.getCart();
         let position = cart.items.findIndex(x => x.produto.id == produto.id);
-        if (position == -1) {
-            cart.items.push({quantidade: 1, produto: produto});
+        if (position == -1) { //verifica se existe
+            cart.items.push({quantidade: 1, produto: produto}); //adiciona
         }
         this.storage.setCart(cart);
         return cart;
@@ -64,7 +64,7 @@ export class CartService {
         }
         this.storage.setCart(cart);
         return cart;
-    }
+    } 
 
     total(): number {
         let cart = this.getCart();
