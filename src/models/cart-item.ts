@@ -1,6 +1,6 @@
 import { ProdutoDTO } from "./produto.dto";
 
 export interface CartItem {
-    quantidade: number,
+    quantidade: number, //deve ser igual ao backend
     produto: ProdutoDTO
 }
