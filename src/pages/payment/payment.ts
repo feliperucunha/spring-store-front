@@ -34,9 +34,9 @@ export class PaymentPage {
     console.log('ionViewDidLoad PaymentPage');
   }
 
-  nextPage() {
+  nextPage() { //passa os dados de pagamento após escolher o tipo de pagamento
     this.pedido.pagamento = this.formGroup.value;
-    console.log(this.pedido);
+    this.navCtrl.setRoot('OrderConfirmationPage', {pedido: this.pedido});
   }
 
 }
