@@ -21,6 +21,12 @@ export class ProdutosPage {
   }
  //dados mockados, ou seja, não estão vindo backend
   ionViewDidLoad() {
+
+    this.loadData(); //refresher
+  }
+
+  loadData() {
+
     let categoria_id = this.navParams.get('categoria_id');
     let loader = this.presentLoading();
     this.produtoService.findByCategoria(categoria_id)
@@ -55,5 +61,12 @@ export class ProdutosPage {
     });
     loader.present();
     return loader;
+  }
+
+  doRefresh(refresher) { //recarrega ao puxar pra cima
+    this.loadData();
+    setTimeout(() => {
+      refresher.complete();
+    }, 1000);
   }
 }
