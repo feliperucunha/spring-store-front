@@ -19,6 +19,7 @@ export class OrderConfirmationPage {
   cartItems: CartItem[]; //mostra os itens do carrinho
   cliente: ClienteDTO;
   endereco: EnderecoDTO;
+  codpedido: string;
 
   constructor(
     public navCtrl: NavController, 
@@ -56,16 +57,25 @@ export class OrderConfirmationPage {
     this.navCtrl.setRoot('CartPage');
   }
 
+  home() {
+    this.navCtrl.setRoot('CategoriasPage');
+  }
+
   checkout() {
     this.pedidoService.insert(this.pedido)
       .subscribe(response => {
         this.cartService.createOrClearCart(); //apaga o carrinho após finalizar a compra
-        console.log(response.headers.get('location'));
+        this.codpedido = this.extractId(response.headers.get('location')); //extrai o número de pedido e armazena no codpedido
       },
       error => {
         if(error.status == 403) {
           this.navCtrl.setRoot('HomePage')
         }
       });
+  }
+
+  private extractId(location : string) : string { //extrai o número de pedido da string retornada com o link do pedido 
+    let position = location.lastIndexOf('/');
+    return location.substring(position +1, location.length);
   }
 }
